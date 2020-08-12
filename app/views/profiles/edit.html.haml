@@ -1,0 +1,14 @@
+.container
+  %ul
+    = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+      = image_tag current_user.avatar_image
+      %div
+        = f.label :avatar, 'プロフィール写真を変更'
+      %div
+        = f.file_field :avatar
+      %div
+        = f.label :name, '名前'
+      %div
+        = f.text_field :name
+      %div
+        = f.submit '保存'

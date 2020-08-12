@@ -1,0 +1,12 @@
+.profile
+  .profile_accountname
+    = current_user.display_name
+
+  .profile_avatar
+    = image_tag current_user.avatar_image
+
+  .profile_name
+    = current_user.name
+
+.container
+= link_to '編集', edit_profile_path
