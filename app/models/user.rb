@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  has_many :posts
+
   has_one :profile
 
   def display_name

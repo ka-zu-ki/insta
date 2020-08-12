@@ -1,0 +1,20 @@
+.container
+  - @posts.each do |post|
+    .post
+      .post_avatar
+        = image_tag post.user.avatar_image
+
+      .post_user-name
+        %p= post.author_name
+
+      .post_time
+        %p= time_ago_in_words(post.display_created_at) + ' ago'
+
+        .post_img  
+          - if post.images.attached?
+            - post.images.each do |image|
+              = link_to post_path(post) do
+                = image_tag image
+
+      .post_content
+        = post.content

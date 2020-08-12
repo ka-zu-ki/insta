@@ -1,0 +1,15 @@
+.container
+  %ul
+    = form_with(model: @post, url: posts_path, method: 'post', local: true) do |f|
+      = image_tag current_user.avatar_image
+      = current_user.name
+      %div
+        = f.label :content, 'content'
+      %div
+        = f.text_area :content
+      %div
+        = f.label :images, 'Album'
+      %div
+        = f.file_field :images, multiple: true
+      %div
+        = f.submit '保存'
