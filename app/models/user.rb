@@ -26,6 +26,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   has_many :posts
+  has_many :likes
 
   has_one :profile
 
@@ -44,4 +45,9 @@ class User < ApplicationRecord
       'default-avatar.jpeg'
     end
   end
+
+    def has_liked?(post)
+    likes.exists?(post_id: post.id)
+  end
+
 end

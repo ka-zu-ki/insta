@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @post = Post.find_by(params[:post_id])
   end
 
   def show
