@@ -17,6 +17,8 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
+  has_many :likes
+
   def author_name
     user.display_name
   end
