@@ -17,7 +17,7 @@
             = link_to post_path(post) do
               = image_tag image
 
-      .post_likes#post-index{data: {post_id: post.id}}
+      .post_likes#post-id{data: {post_id: post.id}}
         .post_likes.hidden.active-heart
           = image_tag 'heart-active.svg'
         .post_likes.hidden.inactive-heart
@@ -25,5 +25,9 @@
 
       .post_content
         = post.content
+
+      .post_add_comment
+        %div
+          = link_to 'コメント数件', post_comments_path(@post)
 
 = javascript_pack_tag 'post'
