@@ -1,26 +1,30 @@
-.post
-  .post_avatar
-    = image_tag @post.user.avatar_image
+-# .post
+-#   .post_avatar
+-#     = image_tag @post.user.avatar_image
 
-  .post_user-name
-    %p= @post.author_name
+-#   .post_user-name
+-#     %p= @post.author_name
 
-  .post_time
-    %p= time_ago_in_words(@post.display_created_at) + ' ago'
+-#   .post_time
+-#     %p= time_ago_in_words(@post.display_created_at) + ' ago'
 
-  .post_img  
-    - if @post.images.attached?
-      - @post.images.each do |image|
-        = link_to post_path(@post) do
-          = image_tag image
+-#   .post_img  
+-#     - if @post.images.attached?
+-#       - @post.images.each do |image|
+-#         = link_to post_path(@post) do
+-#           = image_tag image
 
-  .post_likes#post-index{data: {post_id: @post.id}}
-    .post_likes.hidden.active-heart
-      = image_tag 'heart-active.svg'
-    .post_likes.hidden.inactive-heart
-      = image_tag 'heart.svg'
+-#   .post_likes#post-id{data: {post_id: @post.id}}
+-#     .post_likes.hidden.active-heart
+-#       = image_tag 'heart-active.svg'
+-#     .post_likes.hidden.inactive-heart
+-#       = image_tag 'heart.svg'
 
-  .post_content
-    = @post.content
+-#   .post_content
+-#     = @post.content
 
-= javascript_pack_tag 'post'
+-#   .post_add_comment
+-#     %div
+-#     = link_to 'コメント数件', post_comments_path(@post)
+
+-# = javascript_pack_tag 'post'

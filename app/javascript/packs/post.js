@@ -13,6 +13,8 @@ const handleHeartDisplay = (hasLiked) => {
   }
 }
 
+
+
 document.addEventListener('turbolinks:load', () => {
   $('.profile_avatar').on('click', () => {
     $('.profile_avatar_edit').removeClass('hidden')
@@ -36,7 +38,7 @@ document.addEventListener('turbolinks:load', () => {
     readURL(this);
   });
 
-  const dataset = $('#post-index').data()
+  const dataset = $('#post-id').data()
   const postId = dataset.postId
 
   axios.get(`/posts/${postId}/like`)
@@ -45,6 +47,17 @@ document.addEventListener('turbolinks:load', () => {
       handleHeartDisplay(hasLiked)
     })
 
-    listenInactiveHeartEvent(postId)
-    listenActiveHeartEvent(postId)
+  listenInactiveHeartEvent(postId)
+  listenActiveHeartEvent(postId)
+
+  const commentId = dataset.commentId
+
+  axios.get(`/posts/${postId}/comments/${commentId}`)
+    .then((response) => {
+      const comment = response.data
+      $('.comments-container').append(
+        `<div class="post_comment"><p>${comment.content}</p></div>`,
+        // `<div class="post_comment_name"><p>${comment.user.name}</p></div>`
+      )
+    })
 })
