@@ -13,7 +13,19 @@ const handleHeartDisplay = (hasLiked) => {
   }
 }
 
+const appendNewComment = (comment) => {
+  $('.comments-container').append(
+    `<div class="post_comment"><p>${comment.content}</p></div>`,
+    `<div class="post_comment_name"><p>${comment.user.name}</p></div>`
+  )
+}
 
+const handleCommentForm = () => {
+  $('.show-comment-form').on('click', () => {
+    $('.show-comment-form').addClass('hidden')
+    $('.comment-text-area').removeClass('hidden')
+  })
+}
 
 document.addEventListener('turbolinks:load', () => {
   $('.profile_avatar').on('click', () => {
@@ -50,14 +62,29 @@ document.addEventListener('turbolinks:load', () => {
   listenInactiveHeartEvent(postId)
   listenActiveHeartEvent(postId)
 
-  const commentId = dataset.commentId
-
-  axios.get(`/posts/${postId}/comments/${commentId}`)
+  axios.get(`/posts/${postId}/comments/index_json`)
     .then((response) => {
-      const comment = response.data
-      $('.comments-container').append(
-        `<div class="post_comment"><p>${comment.content}</p></div>`,
-        // `<div class="post_comment_name"><p>${comment.user.name}</p></div>`
-      )
+      const comments = response.data
+      comments.forEach((comment) => {
+        appendNewComment (comment)
+      })
     })
+
+    handleCommentForm()
+
+  $('.add-comment-button').on('click', () => {
+    const content = $('#comment_content').val()
+    if (!content) {
+      window.alert('コメントを入力してください')
+    } else {
+      axios.post(`/posts/${postId}/comments`, {
+        comment: {content: content}
+      })
+        .then((res) => {
+          const comment = res.data
+          appendNewComment (comment)
+          $('#comment_content').val('')
+        })
+    }
+  })
 })

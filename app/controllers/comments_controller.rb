@@ -7,23 +7,19 @@ class CommentsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     @comment = post.comments.build(comment_params.merge(user_id: current_user.id))
-    if @comment.save
-      redirect_to post_comments_path(post), notice: 'コメントを追加'
-    else
-      flash.now[:error] = '更新できませんでした'
-      render :new
-    end
-  end
-
-  def show
-    @post = Post.find(params[:post_id])
-    comment = @post.comments.find(params[:id])
-    render json: comment
+    @comment.save!
+    render json: @comment
   end
 
   def index
     @post = Post.find(params[:post_id])
-    @comment = Comment.all
+    comments = @post.comments
+  end
+
+  def index_json
+    @post = Post.find(params[:post_id])
+    comments = @post.comments
+    render json: comments
   end
 
   private
