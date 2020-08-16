@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  # attributes :id, :name
+  attributes :id, :name
 
-  # belongs_to :user
+  has_many :comments
 end
