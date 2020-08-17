@@ -10,18 +10,19 @@
       %p= 'フォロー解除'
 
   .profile_avatar
+    -# = link_to edit_profile_path do
     = image_tag user.avatar_image, class: 'avatar_present_img'
 
-  - if user === current_user
-    .profile_avatar_edit.hidden
-      = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
-        %img#avatar_img_prev.hidden{:src => "#"}/
-        %div
-          = f.label :avatar, 'プロフィール写真を変更'
-        %div
-          = f.file_field :avatar, id: 'post_img'
-        %div
-          = f.submit '保存'
+    - if user === current_user
+      .profile_avatar_edit.hidden
+        = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+          %img#avatar_img_prev.hidden{:src => "#"}/
+          %div
+            = f.label :avatar, 'プロフィール写真を変更'
+          %div
+            = f.file_field :avatar, id: 'post_img'
+          %div
+            = f.submit '保存'
 
   .profile_name
     = user.name
