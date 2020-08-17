@@ -1,8 +1,16 @@
 .container
   - @posts.each do |post|
     .post
+      -# .post_avatar
+      -#   =link_to account_follow_path(post.user) do
+      -#     = image_tag post.user.avatar_image
       .post_avatar
-        = image_tag post.user.avatar_image
+        - if post.user === current_user
+          = link_to profile_path do
+            = image_tag post.user.avatar_image
+        -else
+          = link_to account_path(post.user) do
+            = image_tag post.user.avatar_image
 
       .post_user-name
         %p= post.author_name

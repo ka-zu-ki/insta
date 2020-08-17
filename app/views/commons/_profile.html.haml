@@ -1,0 +1,45 @@
+.profile
+  .profile_accountname
+    = user.display_name
+
+  .account_follow
+    .follow_button.hidden.follow
+      %p= 'フォローする'
+    .unfollow_button.hidden.unfollow
+      %p= 'フォロー解除'
+
+  .profile_avatar
+    = image_tag user.avatar_image, class: 'avatar_present_img'
+
+  - if user === current_user
+    .profile_avatar_edit.hidden
+      = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+        %img#avatar_img_prev.hidden{:src => "#"}/
+        %div
+          = f.label :avatar, 'プロフィール写真を変更'
+        %div
+          = f.file_field :avatar, id: 'post_img'
+        %div
+          = f.submit '保存'
+
+  .profile_name
+    = user.name
+
+  .profile_follower.follower-count
+    = user.followers.count
+    -# %span#follower-count 0
+    %p= 'フォロワー'
+    
+
+  .profile_folllowing.following-count
+    = user.followings.count
+    %p= 'フォロー中'
+
+.container.profile_post(post)
+  -user.posts.each do |post|
+    .post_img  
+      - post.images.each do |image|
+        = image_tag image, width: 100
+
+.container
+= link_to '編集', edit_profile_path
