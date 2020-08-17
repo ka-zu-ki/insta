@@ -2,6 +2,7 @@
   .profile_accountname
     = user.display_name
 
+
   .account_follow
     .follow_button.hidden.follow
       %p= 'フォローする'
@@ -26,14 +27,16 @@
     = user.name
 
   .profile_follower.follower-count
-    = user.followers.count
-    -# %span#follower-count 0
-    %p= 'フォロワー'
+    = link_to account_followerslists_path(user) do
+      = user.followers.count
+      -# %span#follower-count 0
+      %p= 'フォロワー'
     
 
   .profile_folllowing.following-count
-    = user.followings.count
-    %p= 'フォロー中'
+    = link_to account_followingslists_path(user) do
+      = user.followings.count
+      %p= 'フォロー中'
 
 .container.profile_post(post)
   -user.posts.each do |post|

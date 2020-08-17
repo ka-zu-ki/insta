@@ -13,8 +13,6 @@ document.addEventListener('turbolinks:load', () => {
   const dataset = $('#account-show').data()
   const accountId = dataset.accountId
   const followerId = dataset.followerId
-
-  var count = $('.follower-count').count.length
   
   axios.get(`/accounts/${accountId}/follows/${followerId}`)
     .then((response) => {
@@ -45,7 +43,7 @@ document.addEventListener('turbolinks:load', () => {
         if (response.data.status === 'ok') {
           $('.unfollow').addClass('hidden')
           $('.follow').removeClass('hidden')
-          
+
           // $('.follower-count').html("${user.followers.count}")
           // $('#follower-count').text(Number($('#follower-count').text())-1)
         }
