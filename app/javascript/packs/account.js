@@ -20,14 +20,15 @@ document.addEventListener('turbolinks:load', () => {
       handleFollowDisplay(hasFollowed)
     })
   
-  // フォロー解除
   $('.follow').on('click', () => {
     axios.post(`/accounts/${accountId}/follows`)
       .then((response) => {
         if (response.data.status === 'ok') {
           $('.follow').addClass('hidden')
           $('.unfollow').removeClass('hidden')
-          // $('#follower-count').text(Number($('#follower-count').text())+1)
+          
+          // $('.follower-count').html("${user.followers.count}")
+          // $('.follower-count').text(Number($('.follower-count').text())+1)
         }
       })
       .catch((e) => {
@@ -36,13 +37,14 @@ document.addEventListener('turbolinks:load', () => {
       })
   })
 
-  // フォロー
   $('.unfollow').on('click', () => {
     axios.post(`/accounts/${accountId}/unfollows`)
       .then((response) => {
         if (response.data.status === 'ok') {
           $('.unfollow').addClass('hidden')
           $('.follow').removeClass('hidden')
+
+          // $('.follower-count').html("${user.followers.count}")
           // $('#follower-count').text(Number($('#follower-count').text())-1)
         }
       })

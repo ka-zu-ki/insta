@@ -1,0 +1,7 @@
+.container
+  - follows.each do |follow|
+    .follow_avatar
+      = image_tag follow.avatar_image
+
+    .follow_name
+      = follow.display_name

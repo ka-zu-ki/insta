@@ -12,10 +12,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :profile
+  resource :profile 
 
-  resources :accounts, only: [:show] do
-    resources :follows, only: [:show, :create]
-    resources :unfollows, only: [:show, :create]
+  resources :accounts, only: [:show, :index] do
+    resources :follows, only: [:show, :create] 
+  
+    resources :unfollows, only: [:create]
+
+    resources :followingslists, only: [:index]
+
+    resources :followerslists, only: [:index]
   end
 end
