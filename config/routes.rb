@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
 
-  resources :posts do
+  resources :posts, only: [:index, :new, :create] do
     resource :like, only: [:show, :create, :destroy]
     resources :comments, only: [:new, :create, :index, :show] do
       collection do

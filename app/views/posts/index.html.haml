@@ -1,41 +1,33 @@
-.container
+.post
   - @posts.each do |post|
-    .post
-      -# .post_avatar
-      -#   =link_to account_follow_path(post.user) do
-      -#     = image_tag post.user.avatar_image
-      .post_avatar
-        - if post.user === current_user
-          = link_to profile_path do
-            = image_tag post.user.avatar_image
-        -else
-          = link_to account_path(post.user) do
-            = image_tag post.user.avatar_image
+    .post_avatar
+      - if post.user === current_user
+        = link_to profile_path do
+          = image_tag post.user.avatar_image
+      -else
+        = link_to account_path(post.user) do
+          = image_tag post.user.avatar_image
 
-      .post_user-name
-        %p= post.author_name
+    .post_user-name
+      %p= post.author_name
 
-      .post_time
-        %p= time_ago_in_words(post.display_created_at) + ' ago'
+    .post_time
+      %p= time_ago_in_words(post.display_created_at) + ' ago'
 
-      .post_img  
-        - link_to post_path(post)
-        - if post.images.attached?
-          - post.images.each do |image|
-            = link_to post_path(post) do
-              = image_tag image
+    .post_img  
+      - post.images.each do |image|
+        = image_tag image
 
-      .post_likes#post-id{data: {post_id: post.id}}
-        .post_likes.hidden.active-heart
-          = image_tag 'heart-active.svg'
-        .post_likes.hidden.inactive-heart
-          = image_tag 'heart.svg'
+    .post_likes#post-id{data: {id: post.id, post_id: post.id}}
+      .post_likes.hidden.active-heart
+        = image_tag 'heart-active.svg'
+      .post_likes.hidden.inactive-heart
+        = image_tag 'heart.svg'
 
-      .post_content
-        = post.content
+    .post_content
+      = post.content
 
-      .post_add_comment
-        %div
-          = link_to 'コメント数件', post_comments_path(@post)
+    .post_comment
+      = link_to 'コメント数件', post_comments_path(post)
 
 = javascript_pack_tag 'post'
