@@ -12,10 +12,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :profile
+  resource :profile 
 
   resources :accounts, only: [:show] do
-    resources :follows, only: [:show, :create]
+    resources :follows, only: [:show, :create] 
+  
     resources :unfollows, only: [:show, :create]
   end
 end
