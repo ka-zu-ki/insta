@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   def index
     user_ids = current_user.followings.pluck(:id)
     @posts = Post.where(user_id: user_ids)
+    # @posts = Post.joins(:likes).group(Like.arel_table[:post_id]).where(user_id: user_ids)
     @post = Post.find_by(params[:post_id])
   end
 
