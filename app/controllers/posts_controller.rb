@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    user_ids = current_user.followings.pluck(:id)
+    @posts = Post.where(user_id: user_ids)
+    @post = Post.find_by(params[:post_id])
   end
 
   def new
