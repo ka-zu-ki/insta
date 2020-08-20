@@ -18,10 +18,10 @@
       - post.images.each do |image|
         = image_tag image
 
-    .post_likes#post-id{data: {id: post.id, post_id: post.id}}
-      .post_likes.hidden.active-heart
+    .post_likes#post-id{data: {post_id: post.id}}
+      .post_like.hidden{class: "active-heart-#{post.id}", id: post.id}
         = image_tag 'heart-active.svg'
-      .post_likes.hidden.inactive-heart
+      .post_like.hidden{class: "inactive-heart-#{post.id}", id: post.id}
         = image_tag 'heart.svg'
 
     .post_content

@@ -6,10 +6,14 @@ import {
 } from 'modules/handle_heart'
 
 const handleHeartDisplay = (hasLiked) => {
+  const id = $('.post_like').attr('id')
+  const active = $(`.active-heart-${id}`)
+  const inactive = $(`.inactive-heart-${id}`)
+
   if (hasLiked) {
-    $('.active-heart').removeClass('hidden')
+    $(active).removeClass('hidden')
   } else {
-    $('.inactive-heart').removeClass('hidden')
+    $(inactive).removeClass('hidden')
   }
 }
 
@@ -55,10 +59,11 @@ document.addEventListener('turbolinks:load', () => {
 
   axios.get(`/posts/${postId}/like`)
     .then((response) => {
+      debugger
       const hasLiked = response.data.hasLiked
       handleHeartDisplay(hasLiked)
     })
-
+    
   listenInactiveHeartEvent(postId)
   listenActiveHeartEvent(postId)
 
