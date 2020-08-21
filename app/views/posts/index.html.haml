@@ -1,33 +1,45 @@
 .post
-  - @posts.each do |post|
-    .post_avatar
-      - if post.user === current_user
-        = link_to profile_path do
-          = image_tag post.user.avatar_image
-      -else
-        = link_to account_path(post.user) do
-          = image_tag post.user.avatar_image
+  .container
+    - @posts.each do |post|
+      .post_avatar
+        - if post.user === current_user
+          = link_to profile_path do
+            = image_tag post.user.avatar_image
+        -else
+          = link_to account_path(post.user) do
+            = image_tag post.user.avatar_image
 
-    .post_user-name
-      %p= post.author_name
+      .post_user-name
+        %p= post.author_name
 
-    .post_time
-      %p= time_ago_in_words(post.display_created_at) + ' ago'
+      .post_time
+        %p= time_ago_in_words(post.display_created_at) + ' ago'
 
-    .post_img  
-      - post.images.each do |image|
-        = image_tag image
+      .post_img  
+        - post.images.each do |image|
+          = image_tag image
 
-    .post_likes#post-id{data: {post_id: post.id}}
-      .post_like.hidden{class: "active-heart-#{post.id}", id: post.id}
-        = image_tag 'heart-active.svg'
-      .post_like.hidden{class: "inactive-heart-#{post.id}", id: post.id}
-        = image_tag 'heart.svg'
+      .post_likes#post-id{data: {post_id: post.id}}
+        - if current_user.has_liked?(post) 
+          .post_like{class: "active-heart-#{post.id}", id: post.id}
+            = image_tag 'active-heart.png'
+          .post_like.hidden{class: "inactive-heart-#{post.id}", id: post.id}
+            = image_tag 'inactive-heart.png'
+        - else
+          .post_like.hidden{class: "active-heart-#{post.id}", id: post.id}
+            = image_tag 'active-heart.png'
+          .post_like{class: "inactive-heart-#{post.id}", id: post.id}
+            = image_tag 'inactive-heart.png'
 
-    .post_content
-      = post.content
+      .post_comment
+        = link_to post_comments_path(post) do
+          = image_tag 'comment.png'
 
-    .post_comment
-      = link_to 'コメント数件', post_comments_path(post)
+      .post_share_twitter
+        = link_to "https://twitter.com/share?url=#{request.url}&text=insta" do
+          = image_tag 'Vector.png'
+
+      .post_content
+        = post.content
 
 = javascript_pack_tag 'post'
