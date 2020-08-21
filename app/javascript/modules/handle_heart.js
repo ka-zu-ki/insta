@@ -1,13 +1,17 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
 
+const id = $('.post_like').attr('id')
+const active = $(`.active-heart-${id}`)
+const inactive = $(`.inactive-heart-${id}`)
+
 const listenInactiveHeartEvent = (postId) => {
-  $('.inactive-heart').on('click', () => {
+  $(inactive).on('click', () => {
     axios.post(`/posts/${postId}/like`)
       .then((response) => {
         if (response.data.status === 'ok') {
-          $('.active-heart').removeClass('hidden')
-          $('.inactive-heart').addClass('hidden')
+          $(active).removeClass('hidden')
+          $(inactive).addClass('hidden')
         }
       })
       .catch((e) => {
@@ -18,12 +22,12 @@ const listenInactiveHeartEvent = (postId) => {
 }
 
 const listenActiveHeartEvent = (postId) => {
-  $('.active-heart').on('click', () => {
+  $(active).on('click', () => {
     axios.delete(`/posts/${postId}/like`)
       .then((response) => {
         if (response.data.status === 'ok') {
-          $('.active-heart').addClass('hidden')
-          $('.inactive-heart').removeClass('hidden')
+          $(active).addClass('hidden')
+          $(inactive).removeClass('hidden')
         }
       })
       .catch((e) => {
