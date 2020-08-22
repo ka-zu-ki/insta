@@ -19,17 +19,14 @@
         - post.images.each do |image|
           = image_tag image
 
-      .post_likes#post-id{data: {post_id: post.id}}
-        - if current_user.has_liked?(post) 
-          .post_like{class: "active-heart-#{post.id}", id: post.id}
-            = image_tag 'active-heart.png'
-          .post_like.hidden{class: "inactive-heart-#{post.id}", id: post.id}
-            = image_tag 'inactive-heart.png'
-        - else
-          .post_like.hidden{class: "active-heart-#{post.id}", id: post.id}
-            = image_tag 'active-heart.png'
-          .post_like{class: "inactive-heart-#{post.id}", id: post.id}
-            = image_tag 'inactive-heart.png'
+      .post_likes{:id => "likes-#{post.id}"}
+        = render partial: 'likes/like', locals: { post: post}
+        -# - if current_user.has_liked?(post)
+        -#   = link_to post_like_path(post.id), method: :delete do
+        -#     = image_tag 'active-heart.png'
+        -# - else
+        -#   = link_to post_like_path(post.id), method: :post do
+        -#     = image_tag 'inactive-heart.png'
 
       .post_comment
         = link_to post_comments_path(post) do
@@ -42,4 +39,4 @@
       .post_content
         = post.content
 
-= javascript_pack_tag 'post'
+-# = javascript_pack_tag 'post'

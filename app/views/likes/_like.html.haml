@@ -1,0 +1,6 @@
+- if current_user.has_liked?(post)
+  = link_to post_like_path(post.id), method: :delete, remote: true do
+    = image_tag 'active-heart.png'
+- else
+  = link_to post_like_path(post.id), method: :post, remote: true do
+    = image_tag 'inactive-heart.png'

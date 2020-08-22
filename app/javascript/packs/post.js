@@ -62,9 +62,10 @@ document.addEventListener('turbolinks:load', () => {
   //     const hasLiked = response.data.hasLiked
   //     handleHeartDisplay(hasLiked)
   //   })
+
   
-  listenInactiveHeartEvent(postId)
-  listenActiveHeartEvent(postId)
+  // listenInactiveHeartEvent(postId)
+  // listenActiveHeartEvent(postId)
 
   axios.get(`/posts/${postId}/comments/index_json`)
     .then((response) => {
