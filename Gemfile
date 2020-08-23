@@ -31,8 +31,8 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'devise'
 gem 'active_model_serializers'
-gem 'jquery-rails'
-gem 'jquery-turbolinks'
+
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -27,8 +27,8 @@ document.addEventListener('turbolinks:load', () => {
           $('.follow').addClass('hidden')
           $('.unfollow').removeClass('hidden')
           
-          // $('.follower-count').html("${user.followers.count}")
-          // $('.follower-count').text(Number($('.follower-count').text())+1)
+          $('.follower-count').html("${user.followers.count}")
+          $('.follower-count').text(Number($('.follower-count').text())+1)
         }
       })
       .catch((e) => {
@@ -44,8 +44,8 @@ document.addEventListener('turbolinks:load', () => {
           $('.unfollow').addClass('hidden')
           $('.follow').removeClass('hidden')
 
-          // $('.follower-count').html("${user.followers.count}")
-          // $('#follower-count').text(Number($('#follower-count').text())-1)
+          $('.follower-count').html("${user.followers.count}")
+          $('#follower-count').text(Number($('#follower-count').text())-1)
         }
       })
       .catch((e) => {
