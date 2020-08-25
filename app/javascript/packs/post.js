@@ -21,6 +21,7 @@ const appendNewComment = (comment) => {
   $('.comments-container').append(
     `<div class="post_comment"><p>${comment.content}</p></div>`,
     `<div class="post_comment_name"><p>${comment.user.name}</p></div>`
+    
   )
 }
 
@@ -28,6 +29,13 @@ const handleCommentForm = () => {
   $('.show-comment-form').on('click', () => {
     $('.show-comment-form').addClass('hidden')
     $('.comment-text-area').removeClass('hidden')
+  })
+}
+
+const handleReplyForm = () => {
+  $('.show-reply-form').on('click', () => {
+    $('.show-reply-form').addClass('hidden')
+    $('.reply-text-area').removeClass('hidden')
   })
 }
 
@@ -77,10 +85,28 @@ document.addEventListener('turbolinks:load', () => {
 
     handleCommentForm()
 
+    handleReplyForm()
+
   $('.add-comment-button').on('click', () => {
     const content = $('#comment_content').val()
     if (!content) {
       window.alert('コメントを入力してください')
+    } else {
+      axios.post(`/posts/${postId}/comments`, {
+        comment: {content: content}
+      })
+        .then((res) => {
+          const comment = res.data
+          appendNewComment (comment)
+          $('#comment_content').val('')
+        })
+    }
+  })
+
+  $('.add-reply-button').on('click', () => {
+    const content = $('#comment_content').val()
+    if (!content) {
+      window.alert('返信を入力してください')
     } else {
       axios.post(`/posts/${postId}/comments`, {
         comment: {content: content}

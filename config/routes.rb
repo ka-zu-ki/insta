@@ -5,12 +5,15 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index, :new, :create] do
     resource :like, only: [:show, :create, :destroy]
-    resources :comments, only: [:new, :create, :index, :show] do
+    resources :comments, only: [:index, :new, :create, :destroy] do
       collection do
         get 'index_json'
       end
+      resources :replies, only: [:new, :create]
     end
   end
+
+ 
 
   resource :profile 
 
