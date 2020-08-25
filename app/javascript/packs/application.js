@@ -5,3 +5,6 @@ require("channels")
 require('jquery')
 
 
+
+require("trix")
+require("@rails/actiontext")

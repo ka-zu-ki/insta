@@ -18,4 +18,11 @@ class Relationship < ApplicationRecord
   belongs_to :following, class_name: 'User'
 
   validates :following_id, uniqueness: { scope: :follower_id }
+
+  after_create :send_email
+
+  private
+  def send_email
+    RelationshipMailer.new_follower(following, follower).deliver_later
+  end
 end

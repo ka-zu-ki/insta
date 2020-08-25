@@ -1,14 +1,27 @@
 .comment#post-id{data: {post_id: @post.id}}
   .post_comment
     %h1 コメント一覧
-    .comments-container
+    - @comments.each do |comment|
+      .comment_content
+        = comment.content
+      .comment_name
+        = comment.user.display_name
+    
+        - comment.replies.each do |reply|
+          .comment_reply
+            = reply.content
+          .comment_reply_name
+            = reply.user.display_name
+
+      .comment_reply
+        = link_to '返信する', new_post_comment_reply_path(@post.id, comment)
+
 
 .container
-  .btn-secondary.show-comment-form
-    コメントをする
-  .comment-text-area.hidden
-    = text_area_tag :comment_content, '', class: 'sm'
-    .btn-secondary.add-comment-button
-      コメントをする
+  .comment_add_new
+    = link_to 'コメントする', new_post_comment_path(@post)
 
-= javascript_pack_tag 'post'
+      
+
+-# = javascript_pack_tag 'post'
+
