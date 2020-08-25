@@ -10,6 +10,8 @@
         - comment.replies.each do |reply|
           .comment_reply
             = reply.content
+          .comment_reply_name
+            = reply.user.display_name
 
       .comment_reply
         = link_to '返信する', new_post_comment_reply_path(@post.id, comment)

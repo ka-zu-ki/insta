@@ -3,7 +3,6 @@
 # Table name: replies
 #
 #  id         :integer          not null, primary key
-#  content    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  comment_id :integer          not null
@@ -17,6 +16,8 @@
 #  index_replies_on_user_id     (user_id)
 #
 class Reply < ApplicationRecord
+  has_rich_text :content
+
   belongs_to :user
   belongs_to :post
   belongs_to :comment
