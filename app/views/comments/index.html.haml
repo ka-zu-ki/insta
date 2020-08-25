@@ -6,11 +6,10 @@
         = comment.content
       .comment_name
         = comment.user.display_name
-        .comment_reply
-          = comment.replies.ids
-
-        -# - @replies.each do |reply|
-        -#   = reply.content
+    
+        - comment.replies.each do |reply|
+          .comment_reply
+            = reply.content
 
       .comment_reply
         = link_to '返信する', new_post_comment_reply_path(@post.id, comment)

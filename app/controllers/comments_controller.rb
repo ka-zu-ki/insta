@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comments = @post.comments
     @replies = Reply.all
+    # @replies = @coments.replies
   end
 
   # def index_json

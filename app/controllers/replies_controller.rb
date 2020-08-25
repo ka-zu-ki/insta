@@ -14,7 +14,7 @@ class RepliesController < ApplicationController
   end
 
   def index
-    @reply = Reply.all
+    @replies = Reply.all
   end
 
   private
