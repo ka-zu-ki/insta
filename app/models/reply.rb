@@ -21,4 +21,11 @@ class Reply < ApplicationRecord
   belongs_to :user
   belongs_to :post
   belongs_to :comment
+
+  after_create :send_email
+
+  private
+  def send_email
+    SendWhenMentionMailer.send_mention(user, reply).deliver_now
+  end
 end

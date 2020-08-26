@@ -1,7 +1,7 @@
-class SendwhenmentionMailer < ApplicationMailer
+class SendWhenMentionMailer < ApplicationMailer
   def send_mention(user, reply)
     @user = user
-    @reply = reply
-    mail to: user.email, subject: '（アカウント名）さんからコメントに返信がありました'
+    @comment = comment
+    mail to: user.email, subject: 'コメントに返信がありました'
   end
 end
