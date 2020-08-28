@@ -1,0 +1,123 @@
+.post_top {
+  overflow: hidden;
+
+  font-family: Poppins;
+  font-style: normal;
+
+  &_left {
+    float: left;
+    width: 20%;
+
+    &_avatar {
+      margin-top: 30px;
+      margin-left: 13px;
+    }
+  }
+
+  &_right {
+    float: right;
+    width: 80%;
+
+    &_content {
+      margin-top: 40px;
+      margin-left: 15px;
+      padding: 0;
+    }
+
+    &_user-name {
+      font-weight: 520;
+      font-size: 20px;
+
+      color: #333333;
+    }
+
+    &_time {
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 3px;
+
+      color: #9E9E9E;
+    }
+  }
+}
+
+.post_body {
+  margin-top: 11px;
+
+  &_img {
+    padding: 15px;
+    width: 450px;
+    height: 325px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+// .swiper-container {
+//   width: 400px;
+//   font-size: 0;
+// }
+// /* 2段目のSwiper全体のスタイル */
+// .swiper2 {
+//   margin-top: 8px;
+// }
+// /* 2段目のSwiperのスライドのスタイル */
+// .swiper2 .swiper-slide {
+//   height: 100px;
+//   line-height: 100px;
+//   -webkit-filter: brightness(0.5);
+//   filter: brightness(0.5); // 画像の明度調節
+// }
+// /* 2段目のSwiperの現在のスライドのスタイル */
+// .swiper2 .swiper-slide-active {
+//   -webkit-filter: brightness(1);
+//   filter: brightness(1);
+// }
+
+.post_share {
+  overflow: hidden;
+
+  &_icon {
+    display: flex;
+    top: 13px;
+  }
+
+  &_like {
+    margin-left: 20px;
+  }
+
+  &_comment {
+    margin-left: 20px;
+  }
+
+  &_twitter {
+    margin-left: 20px;
+  }
+}
+
+.post_detail {
+  margin-left: 20px;
+  margin-top: 10px;
+
+  &_info {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+
+    margin-bottom: 5px;
+
+    color: #333333;
+  }
+
+  &_content {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+
+    color: #333333;
+  }
+}

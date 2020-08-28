@@ -3,28 +3,16 @@
 @import 'actiontext';
 @import 'trix/dist/trix.css';
 
-// .post {
-//   position: relative;
-//   width: 375px;
-//   height: 812px;
-//   background: #FFFFFF;
 
-//   .post_avatar {
-//     position: absolute;
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
+.clear::after {
+  content: "";
+  clear: both;
+  display: block;
+}
 
 
 .hidden {
   display: none;
 }
+
+
