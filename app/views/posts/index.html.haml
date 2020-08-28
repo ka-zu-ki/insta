@@ -1,34 +1,65 @@
 .post
   .container
     - @posts.each do |post|
-      .post_avatar
-        - if post.user === current_user
-          = link_to profile_path do
-            = image_tag post.user.avatar_image
-        -else
-          = link_to account_path(post.user) do
-            = image_tag post.user.avatar_image
 
-      .post_user-name
-        %p= post.author_name
+      .post_top
+        .post_top_left
+          .post_top_left_avatar
+            - if post.user === current_user
+              = link_to profile_path do
+                = image_tag post.user.avatar_image
+            -else
+              = link_to account_path(post.user) do
+                = image_tag post.user.avatar_image
 
-      .post_time
-        %p= time_ago_in_words(post.display_created_at) + ' ago'
+        .post_top_right
+          %ul.post_top_right_content
+            .post_top_right_user-name
+              %p= post.author_name
+            .post_top_right_time
+              %p= time_ago_in_words(post.display_created_at) + ' ago'
 
-      .post_img  
-        - post.images.each do |image|
-          = image_tag image
+      .post_body
+        .post_body_img
+          - post.images.each do |image|
+            .post_body_imgs
+              = image_tag image
 
-      .post_likes{:id => "likes-#{post.id}"}
-        = render partial: 'likes/like', locals: { post: post}
+      -# .swiper-container.swiper1
+      -#   .swiper-wrapper
+      -#     - post.images.each do |image|
+      -#       = image_tag image, class:"swiper-slide"
 
-      .post_comment
-        = link_to post_comments_path(post) do
-          = image_tag 'comment.png'
+      -#   .swiper-pagination
 
-      .post_share_twitter
-        = link_to "https://twitter.com/share?url=#{request.url}&text=insta" do
-          = image_tag 'Vector.png'
+      -#   .swiper-button-prev
+      -#   .swiper-button-next
 
-      .post_content
-        = post.content
+      -#   .swiper-scrollbar
+
+      -# .swiper-container.swiper2
+      -# .swiper-wrapper
+      -#   - post.images.each do |image|
+      -#     = image_tag image, class:"swiper-slide"
+
+      .post_share
+        .post_share_icon
+          .post_share_like
+            .post_likes{:id => "likes-#{post.id}"}
+              = render partial: 'likes/like', locals: { post: post}
+
+          .post_share_comment
+            = link_to post_comments_path(post) do
+              = image_tag 'comment.png'
+
+          .post_share_twitter
+            = link_to "https://twitter.com/share?url=#{request.url}&text=insta" do
+              = image_tag 'Vector.png'
+
+      .post_detail
+        .post_detail_info
+          - if post.likes.count > 0
+            = post.likes.count 
+            liked this post
+        .post_detail_content
+          = post.content

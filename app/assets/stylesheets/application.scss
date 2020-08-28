@@ -4,9 +4,15 @@
 @import 'trix/dist/trix.css';
 
 
-
+.clear::after {
+  content: "";
+  clear: both;
+  display: block;
+}
 
 
 .hidden {
   display: none;
 }
+
+

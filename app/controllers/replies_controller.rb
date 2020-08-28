@@ -19,6 +19,6 @@ class RepliesController < ApplicationController
 
   private
   def reply_params
-    params.permit(:content)
+    params.permit(:content, :account_name)
   end
 end

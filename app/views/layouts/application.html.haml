@@ -7,6 +7,10 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+    %link{:href => "https://unpkg.com/swiper/swiper-bundle.css", :rel => "stylesheet"}/
+    
+
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
     %header
@@ -16,4 +20,7 @@
       =link_to 'ホーム', root_path
       =link_to '新規投稿', new_post_path
 
+    %script{:src => "https://unpkg.com/swiper/swiper-bundle.js"}
+
     = yield
+    

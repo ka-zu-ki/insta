@@ -1,5 +1,11 @@
 = form_with(model: @replies, url: post_comment_replies_path(@comment.post_id, @comment), method: "post", local: true) do |f|
   %div
+    = f.label :account_name, 'アカウント名'
+  -# %div 
+  -#   = f.collection_select :display_name, User.all, :id, :display_name
+  %div 
+    = f.text_area :account_name
+  %div
     = f.label :content, '内容'
   %div 
     = f.rich_text_area :content
