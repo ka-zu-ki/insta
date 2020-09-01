@@ -19,9 +19,7 @@ const handleHeartDisplay = (hasLiked) => {
 
 const appendNewComment = (comment) => {
   $('.comments-container').append(
-    `<div class="post_comment"><p>${comment.content}</p></div>`,
-    `<div class="post_comment_name"><p>${comment.user.name}</p></div>`
-    
+    `<div class="post_comment"><p>${comment.content}</p></div>` 
   )
 }
 
@@ -103,19 +101,19 @@ document.addEventListener('turbolinks:load', () => {
     }
   })
 
-  $('.add-reply-button').on('click', () => {
-    const content = $('#comment_content').val()
-    if (!content) {
-      window.alert('返信を入力してください')
-    } else {
-      axios.post(`/posts/${postId}/comments`, {
-        comment: {content: content}
-      })
-        .then((res) => {
-          const comment = res.data
-          appendNewComment (comment)
-          $('#comment_content').val('')
-        })
-    }
-  })
+  // $('.add-reply-button').on('click', () => {
+  //   const content = $('#comment_content').val()
+  //   if (!content) {
+  //     window.alert('返信を入力してください')
+  //   } else {
+  //     axios.post(`/posts/${postId}/comments`, {
+  //       comment: {content: content}
+  //     })
+  //       .then((res) => {
+  //         const comment = res.data
+  //         appendNewComment (comment)
+  //         $('#comment_content').val('')
+  //       })
+  //   }
+  // })
 })

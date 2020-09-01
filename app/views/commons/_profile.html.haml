@@ -3,8 +3,12 @@
     .profile_top_back
       = link_to :back do
         = image_tag 'back.png'
-    .profile_top_account-name
-      = user.display_name
+    - if user === current_user
+      .profile_top_user-name
+        = user.display_name
+    - else
+      .profile_top_account-name
+        = user.display_name
 
     .profile_top_follow
       .follow_button.hidden.follow
@@ -30,24 +34,21 @@
     .profile_detail_top
       .profile_detail_top_posts
         = user.posts.count
+        %h2 Posts
       .profile_detail_top_follower.follower-count
         = link_to account_followerslists_path(user) do
           = user.followers.count
+          %h2 Followers
       .profile_detail_top_following.following-count
         = link_to account_followingslists_path(user) do
           = user.followings.count
+          %h2 Followings
   
-    .profile_detail_bottom
-      .profile_detail_bottom_posts
-        Posts
-      .profile_detail_bottom_follower
-        Follower
-      .profile_detail_bottom_following
-        Following
 
   .profile_post
     - user.posts.each do |post| 
       - post.images.each do |image|
-        = image_tag image, class: 'item'
+        .profile_post_images
+          = image_tag image.variant(resize: "150x200"), class: 'item'
 
 

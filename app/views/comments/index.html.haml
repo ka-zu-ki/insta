@@ -1,27 +1,52 @@
 .comment#post-id{data: {post_id: @post.id}}
-  .post_comment
-    %h1 コメント一覧
-    - @comments.each do |comment|
-      .comment_content
-        = comment.content
-      .comment_name
-        = comment.user.display_name
-    
-        - comment.replies.each do |reply|
-          .comment_reply
-            = reply.content
-          .comment_reply_name
-            = reply.user.display_name
+  .comment_top
+    .comment_top_back
+      = link_to :back do
+        = image_tag 'back.png'
+    .comment_top_status
+      Comment
 
-      .comment_reply
-        = link_to '返信する', new_post_comment_reply_path(@post.id, comment)
+  - @comments.each do |comment|
+    .comment_body
+      .comment_body_left
+        .comment_body_left_avatar
+          = image_tag comment.user.avatar_image
+
+      .comment_body_right
+        .comment_body_right_name
+          = comment.user.display_name
+        .comment_body_right_content
+          = comment.content
+
+    -# - comment.replies.each do |reply|
+    -#   .comment_reply
+    -#     .comment_reply_left
+    -#       .comment_reply_left_avatar
+    -#         = image_tag reply.user.avatar_image
+    -#     .comment_reply_right
+    -#       .comment_reply_right_name
+    -#         = reply.user.display_name
+    -#       .comment_reply_right_content
+    -#         = reply.content
+    -#       .comment_reply_right_add
+    -#         = link_to '返信する', new_post_comment_reply_path(@post.id, comment)
+
+
+-# .container
+-#   .comment_add_new
+-#     = link_to 'コメントする', new_post_comment_path(@post)
+
 
 
 .container
-  .comment_add_new
-    = link_to 'コメントする', new_post_comment_path(@post)
+  .btn-secondary.show-comment-form
+    コメントをする
+  .comment-text-area.hidden
+    = text_area_tag :comment_content, '', class: 'sm'
+    .btn-secondary.add-comment-button
+      コメントをする
 
       
 
--# = javascript_pack_tag 'post'
+= javascript_pack_tag 'post'
 

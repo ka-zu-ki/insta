@@ -1,0 +1,49 @@
+.follow {
+  font-family: Poppins;
+  font-style: normal;
+
+  &_top {
+    overflow: hidden;
+
+    margin-top: 20px;
+    margin-bottom: 50px;
+
+    &_back {
+      float: left;
+      margin-left: 15px;
+    }
+
+    &_status {
+      float: right;
+      margin-right: 190px;
+
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  &_body {
+    display: flex;
+    margin-top: 50px;
+
+    &_avatar {
+      margin-left: 15px;
+    }
+
+    &_name {
+      margin-left: 50px;
+      margin-top: 25px;
+
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 21px;
+    }
+  }
+
+  hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #EEEEEE;
+  }
+}

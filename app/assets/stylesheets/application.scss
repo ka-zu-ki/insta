@@ -5,7 +5,8 @@
 @import 'profile';
 @import 'header';
 @import 'form';
-
+@import '_list';
+@import 'comment';
 
 .clear::after {
   content: "";

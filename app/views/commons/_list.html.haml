@@ -1,7 +1,21 @@
-.container
-  - follows.each do |follow|
-    .follow_avatar
-      = image_tag follow.avatar_image
+.follow
+  .follow_top
+    .follow_top_back
+      = link_to :back do
+        = image_tag 'back.png'
+    .follow_top_status
+      - if current_page?(account_followerslists_path)
+        Followers
+      - else
+        Followings
 
-    .follow_name
-      = follow.display_name
+  - follows.each do |follow|
+    .follow_body
+      .follow_body_avatar
+        = image_tag follow.avatar_image
+
+      .follow_body_name
+        = follow.display_name
+    %hr/
+
+
