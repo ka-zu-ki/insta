@@ -1,16 +1,18 @@
-.profile
-  .profile_accountname
-    = user.display_name
+.container
+  .profile_top
+    .profile_top_back
+      = link_to :back do
+        = image_tag 'back.png'
+    .profile_top_account-name
+      = user.display_name
 
-
-  .account_follow
-    .follow_button.hidden.follow
-      %p= 'フォローする'
-    .unfollow_button.hidden.unfollow
-      %p= 'フォロー解除'
+    .profile_top_follow
+      .follow_button.hidden.follow
+        Follow
+      .unfollow_button.hidden.unfollow
+        Unfollow
 
   .profile_avatar
-    -# = link_to edit_profile_path do
     = image_tag user.avatar_image, class: 'avatar_present_img'
 
     - if user === current_user
@@ -24,26 +26,28 @@
           %div
             = f.submit '保存'
 
-  .profile_name
-    = user.name
+  .profile_detail
+    .profile_detail_top
+      .profile_detail_top_posts
+        = user.posts.count
+      .profile_detail_top_follower.follower-count
+        = link_to account_followerslists_path(user) do
+          = user.followers.count
+      .profile_detail_top_following.following-count
+        = link_to account_followingslists_path(user) do
+          = user.followings.count
+  
+    .profile_detail_bottom
+      .profile_detail_bottom_posts
+        Posts
+      .profile_detail_bottom_follower
+        Follower
+      .profile_detail_bottom_following
+        Following
 
-  .profile_follower.follower-count
-    = link_to account_followerslists_path(user) do
-      = user.followers.count
-      -# %span#follower-count 0
-      %p= 'フォロワー'
-    
-
-  .profile_folllowing.following-count
-    = link_to account_followingslists_path(user) do
-      = user.followings.count
-      %p= 'フォロー中'
-
-.container.profile_post(post)
-  -user.posts.each do |post|
-    .post_img  
+  .profile_post
+    - user.posts.each do |post| 
       - post.images.each do |image|
-        = image_tag image, width: 100
+        = image_tag image, class: 'item'
 
-.container
-= link_to '編集', edit_profile_path
+

@@ -1,4 +1,8 @@
 .post
+  .post_new
+    = link_to new_post_path do
+      = image_tag 'camera.png' 
+
   .container
     - @posts.each do |post|
 
@@ -20,27 +24,34 @@
               %p= time_ago_in_words(post.display_created_at) + ' ago'
 
       .post_body
-        .post_body_img
-          - post.images.each do |image|
-            .post_body_imgs
-              = image_tag image
+        .swiper-container
+          .swiper-wrapper
+            - post.images.each do |image|
+              = image_tag image, class:"swiper-slide"
+        
+          .swiper-pagination
 
-      -# .swiper-container.swiper1
-      -#   .swiper-wrapper
-      -#     - post.images.each do |image|
-      -#       = image_tag image, class:"swiper-slide"
+          .swiper-button-prev
+          .swiper-button-next
 
-      -#   .swiper-pagination
+          %script{:src => "../package/swiper-bundle.min.js"}
 
-      -#   .swiper-button-prev
-      -#   .swiper-button-next
-
-      -#   .swiper-scrollbar
-
-      -# .swiper-container.swiper2
-      -# .swiper-wrapper
-      -#   - post.images.each do |image|
-      -#     = image_tag image, class:"swiper-slide"
+          :javascript
+            var swiper = new Swiper('.swiper-container', {
+                  slidesPerView: 1,
+                  spaceBetween: 30,
+                  keyboard: {
+                    enabled: true,
+                  },
+                  pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                  },
+                  navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                  },
+                });         
 
       .post_share
         .post_share_icon

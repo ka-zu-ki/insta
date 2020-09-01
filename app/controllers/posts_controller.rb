@@ -21,6 +21,19 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def update
+    @post = current_user.posts.find(params[:id])
+    if @post.update(post_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:content, images: [])

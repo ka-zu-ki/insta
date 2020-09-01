@@ -20,6 +20,6 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.required(:profile).permit(:avatar)
+    params.required(:profile).permit(:avatar, images: [])
   end
 end

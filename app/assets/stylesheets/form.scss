@@ -1,0 +1,124 @@
+.form {
+
+  &_top {
+    overflow: hidden;
+
+    margin-top: 25px;
+    margin-bottom: 40px;
+
+    &_left {
+      float: left;
+
+      margin-left: 15px;
+
+      p {
+        margin: auto;
+
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 25px;
+        line-height: 24px;
+
+        color: #2F80ED;
+      }
+    }
+
+    &_right {
+      float: right;
+
+      margin-right: 15px;
+
+      input {
+        margin: 25px, 0;
+
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+
+        color: #BDBDBD;
+
+        background: transparent;
+      }
+
+    }
+  }
+
+
+  &_body {
+    overflow: hidden;
+
+    &_left {
+      float: left;
+
+      margin-left: 20px;
+      margin-top: 10px;
+
+      img {
+        width: 65px;
+        height: 65px;
+      }
+    }
+
+    &_right {
+      float: right;
+
+      margin-right: 270px;
+      margin-top: 35px;
+
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 24px;
+
+      color: #333333;
+    }
+  }
+
+  &_content {
+    padding-left: 30px;
+    padding-top: 30px;
+
+    ::placeholder {
+      color: #BDBDBD;
+      font-size: 1.5em;
+    }
+
+    textarea {
+      border: none;
+      width: 95%;
+    }
+
+    hr {
+      width: 95%;
+      margin-right: 20px;
+      margin-top: auto;
+    }
+  }
+
+  &_img {
+    padding-left: 30px;
+    padding-top: 30px;
+
+    input {
+      width: 95%;
+      display: none;
+    }
+
+    .label {
+      display: block;
+      border: 2px solid #E0E0E0;
+      box-sizing: border-box;
+      width: 100px;
+      height: 30px;
+      margin-top: 10px;
+      margin-left: 10px;
+      border-radius: 5px;
+      padding-top: 2px;
+      text-align: center;
+    }
+  }
+}

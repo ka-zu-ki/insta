@@ -1,0 +1,97 @@
+.profile {
+  font-family: Poppins;
+  font-style: normal;
+
+  &_top {
+    margin-top: 20px;
+
+    display: flex;
+
+    &_back {
+      padding-left: 15px;
+    }
+
+    &_account-name {
+      margin-right: auto;
+      margin-left: auto;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 24px;
+    }
+
+    &_follow {
+      margin-left: 74px;
+
+      font-weight: 550;
+      font-size: 18px;
+      line-height: 24px;
+
+      color: #BDBDBD;
+    }
+  }
+
+}
+
+.profile_avatar {
+  .avatar_present_img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+  }
+}
+
+.profile_detail {
+  height: 120px;
+  padding-top: 60px;
+
+  &_top {
+    display: flex;
+    justify-content: center;
+
+    &_posts {
+      //  margin-right: 80px;
+    }
+
+    &_follower {}
+
+    &_following {
+      //  margin-left: 80px;
+    }
+  }
+
+  &_bottom {
+    display: flex;
+    justify-content: center;
+
+    &_posts {
+      // margin-right: 20px;
+    }
+
+    &_follower {
+      // margin-left: 20px;
+    }
+
+    &_following {
+      // margin-left: 20px;
+    }
+  }
+
+  &_post {
+
+    display: inline;
+    // flex-wrap: wrap;
+
+
+    // .image {
+    //   display: flex;
+    // }
+  }
+}
+
+.item {
+  display: flex;
+   flex-wrap: wrap;
+}

@@ -2,6 +2,9 @@
 @import 'post';
 @import 'actiontext';
 @import 'trix/dist/trix.css';
+@import 'profile';
+@import 'header';
+@import 'form';
 
 
 .clear::after {
@@ -10,6 +13,14 @@
   display: block;
 }
 
+a {
+  text-decoration: none;
+  color:  #333A42;
+}
+
+a:hover {
+  opacity: 0.7;
+}
 
 .hidden {
   display: none;
