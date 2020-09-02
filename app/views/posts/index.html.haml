@@ -7,6 +7,9 @@
       .post_header_profile
         = link_to profile_path do
           = image_tag current_user.avatar_image
+    - else 
+      .post_header_log-in
+        = link_to 'LOG IN', new_user_session_path 
 
   .container
     - @posts.each do |post|

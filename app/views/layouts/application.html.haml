@@ -21,25 +21,10 @@
           = image_tag 'Wifi'
           = image_tag 'Battery'
 
-      -# .header_bottom
-        -# - unless current_page?(root_path)
-        -#   = link_to :back do
-        -#     = image_tag 'back.png'
-        
-        
-
-       
-        
-        
-      -# # = link_to 'ログイン', new_user_session_path
-      -# =link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
-      -# =link_to 'プロフィール', profile_path
-      -# =link_to 'ホーム', root_path
-      
-     
-
-
-
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
 
     %script{:src => "https://unpkg.com/swiper/swiper-bundle.js"}
     = yield

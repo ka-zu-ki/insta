@@ -23,6 +23,9 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :comments
   has_many :replies
+
+  validates :images, presence: true
+  validates :content, presence: true
   
 
   def author_name

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
 
   def index
     # user_ids = current_user.followings.pluck(:id)
