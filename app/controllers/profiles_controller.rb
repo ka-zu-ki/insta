@@ -3,6 +3,14 @@ class ProfilesController < ApplicationController
     @profile = current_user.profile
   end
 
+  def create
+    @profile = current_user.build_profile(profile_params)
+    @profile.save!
+    
+    redirect_to profile_path
+  end
+
+
   def edit
     @profile = current_user.prepare_profile
   end
@@ -20,6 +28,6 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.required(:profile).permit(:avatar, images: [])
+    params.required(:profile).permit(:avatar)
   end
 end
