@@ -1,7 +1,12 @@
 .post
-  .post_new
-    = link_to new_post_path do
-      = image_tag 'camera.png' 
+  .post_header
+    .post_header_new
+      = link_to new_post_path do
+        = image_tag 'camera.png' 
+    - if user_signed_in?
+      .post_header_profile
+        = link_to profile_path do
+          = image_tag current_user.avatar_image
 
   .container
     - @posts.each do |post|
@@ -34,24 +39,7 @@
           .swiper-button-prev
           .swiper-button-next
 
-          %script{:src => "../package/swiper-bundle.min.js"}
-
-          :javascript
-            var swiper = new Swiper('.swiper-container', {
-                  slidesPerView: 1,
-                  spaceBetween: 30,
-                  keyboard: {
-                    enabled: true,
-                  },
-                  pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                  },
-                  navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                  },
-                });         
+      = javascript_include_tag 'application.js'
 
       .post_share
         .post_share_icon

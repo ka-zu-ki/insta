@@ -2,9 +2,22 @@
   font-family: Poppins;
   font-style: normal;
 
-  &_new {
-    padding-left: 20px;
+  &_header {
+    display: flex;
+    &_new {
+      padding-left: 20px;
     padding-top: 20px;
+    }
+
+    &_profile {
+      margin-left: 340px;
+      margin-top: 15px;
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
   }
 
   &_top {
@@ -51,6 +64,32 @@
       }
     }
   }
+
+  .post_show {
+    width: 1233;
+
+    &_back {
+      padding-left: 15px;
+      margin-bottom: 20px;
+    }
+
+    .post_content {
+      margin-top: 50px;
+      margin-left: 15px;
+      font-size: 20px;
+    }
+
+    .post_edit {
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+
+    .post_delete {
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+
+  } 
 
   .post_body {
     margin-top: 11px;

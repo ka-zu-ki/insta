@@ -1,7 +1,7 @@
 .comment#post-id{data: {post_id: @post.id}}
   .comment_top
     .comment_top_back
-      = link_to :back do
+      = link_to 'javascript:history.back()' do
         = image_tag 'back.png'
     .comment_top_status
       Comment

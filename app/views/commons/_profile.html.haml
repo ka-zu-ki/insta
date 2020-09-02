@@ -1,7 +1,7 @@
 .container
   .profile_top
     .profile_top_back
-      = link_to :back do
+      = link_to 'javascript:history.back()' do
         = image_tag 'back.png'
     - if user === current_user
       .profile_top_user-name
@@ -9,6 +9,9 @@
     - else
       .profile_top_account-name
         = user.display_name
+    .profile_top_log-out
+      - if current_page?(profile_path)
+        = link_to 'LOG OUT', destroy_user_session_path, data: { method: 'delete' }
 
     .profile_top_follow
       .follow_button.hidden.follow
@@ -34,21 +37,22 @@
     .profile_detail_top
       .profile_detail_top_posts
         = user.posts.count
-        %h2 Posts
+        %p Posts
       .profile_detail_top_follower.follower-count
         = link_to account_followerslists_path(user) do
           = user.followers.count
-          %h2 Followers
+          %p Followers
+  
       .profile_detail_top_following.following-count
         = link_to account_followingslists_path(user) do
           = user.followings.count
-          %h2 Followings
-  
+          %p Followings
 
   .profile_post
     - user.posts.each do |post| 
       - post.images.each do |image|
         .profile_post_images
-          = image_tag image.variant(resize: "150x200"), class: 'item'
+          = link_to post_path(post) do
+            = image_tag image.variant(resize: "150x200"), class: 'item'
 
 

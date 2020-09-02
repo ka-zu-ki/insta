@@ -25,13 +25,24 @@
 
   &_body {
     overflow: hidden;
-    margin-top: 60px;
+    margin-top: 30px;
+    
+    .main {
+      background-color: lightgray;
+      padding-bottom: 150px;
+    }
+    
 
     &_left {
       float: left;
 
       &_avatar {
         margin-left: 15px;
+
+        img {
+          width: 70px;
+          height: 70px;
+        }
       }
     }
 
@@ -39,12 +50,12 @@
       float: right;
       margin-top: 10px;
       width: 350px;
-      height: 180px;
+      height: 150px;
 
       &_name {
         margin-right: 210px;
 
-        font-size: 20px;
+        font-size: 15px;
         line-height: 24px;
       }
 
@@ -59,40 +70,16 @@
       }
     }
   }
+}
 
-  // &_reply {
-  //   margin-top: 25px;
-  //   margin-left: 80px;
-  //   overflow: hidden;
+.btn-secondary {
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  padding: 16px 0;
+  font-weight: bold;
+}
 
-  //   &_left {
-  //     float: left;
-  //     img {
-  //       width: 65px;
-  //       height: 65px;
-  //     }
-  //   }
-
-  //   &_right {
-  //     float: right;
-  //     margin-right: 250px;
-
-  //     &_name {
-  //       font-size: 20px;
-  //     }
-
-  //     &_content{
-  //       margin-top: 15px;
-
-  //       line-height: 20px;
-  //       color: #9B9B9B;       
-  //     }
-
-  //     &_add {
-  //       margin-top: 5px;
-
-  //       font-size: 5px;
-  //     }
-  //   }
-  // }
+textarea {
+  width: 100%;
 }

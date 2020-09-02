@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
 
-  resources :posts, only: [:index, :new, :create, :edit, :destroy] do
+  resources :posts do
     resource :like, only: [:show, :create, :destroy]
     resources :comments, only: [:index, :new, :create, :destroy] do
       collection do
