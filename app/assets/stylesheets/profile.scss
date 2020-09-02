@@ -1,0 +1,109 @@
+.profile {
+  font-family: Poppins;
+  font-style: normal;
+
+  &_top {
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    &_back {
+      float: left;
+      text-align: center;
+      margin-left: 30px;
+    }
+
+    &_user-name {
+      float: left;
+      text-align: center;
+      margin-left: 100px;
+
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 24px;
+    }
+
+    &_account-name {
+      float: left;
+      text-align: center;
+      margin-left: 155px;
+
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 24px;
+    }
+
+    &_log-out {
+      float: right;
+      margin-right: 15px;
+    }
+
+    &_follow {
+      float: right;
+      text-align: center;
+      margin-right: 30px;
+
+      font-weight: 550;
+      font-size: 18px;
+      line-height: 24px;
+
+      cursor: pointer;
+
+      color: #BDBDBD;
+    }
+  }
+
+}
+
+.profile_avatar {
+  .avatar_present_img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+  }
+
+  &_edit {
+    margin-left: 150px;
+    margin-top: 50px;
+  }
+}
+
+.profile_detail {
+  height: 150px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  &_top {
+    display: flex;
+
+    &_posts {
+      width: calc(100% / 3);
+      text-align: center;
+    }
+
+    &_follower {
+      width: calc(100% / 3);
+      text-align: center;
+    }
+
+    &_following {
+      width: calc(100% / 3);
+      text-align: center;
+    }
+
+  }
+}
+  
+
+
+.profile_post {
+  display: flex;
+  flex-wrap: wrap;
+
+  &_images {
+    width: calc(100% / 3);
+  }
+}

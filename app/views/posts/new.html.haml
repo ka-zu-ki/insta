@@ -1,15 +1,25 @@
 .container
-  %ul
+  .form
     = form_with(model: @post, url: posts_path, method: 'post', local: true) do |f|
-      = image_tag current_user.avatar_image
-      = current_user.name
-      %div
-        = f.label :content, 'content'
-      %div
-        = f.text_area :content
-      %div
-        = f.label :images, 'Album'
-      %div
+      .form_top
+        .form_top_left
+          = link_to :back do
+            %p= 'Cance'
+  
+        .form_top_right
+          = f.submit 'Post'
+
+      .form_body
+        .form_body_left
+          = image_tag current_user.avatar_image
+        .form_body_right
+          = current_user.name
+      
+      .form_content
+        = f.text_area :content, placeholder: 'What\'s on your mind?', class: 'input'
+        %hr/
+
+      .form_img
+        = f.label :images, "+Album", class: 'label'
         = f.file_field :images, multiple: true
-      %div
-        = f.submit '保存'
+          

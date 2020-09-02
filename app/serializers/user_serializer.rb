@@ -18,7 +18,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :display_name, :avatar_image
 
   has_many :comments
 end

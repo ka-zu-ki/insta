@@ -1,30 +1,25 @@
--# .post
--#   .post_avatar
--#     = image_tag @post.user.avatar_image
+.post_show
+  .post_show_back
+    = link_to 'javascript:history.back()' do
+      = image_tag 'back.png'
+  .post_body
+    .swiper-container
+      .swiper-wrapper
+        - @post.images.each do |image|
+          = image_tag image, class:"swiper-slide"
+    
+      .swiper-pagination
 
--#   .post_user-name
--#     %p= @post.author_name
+      .swiper-button-prev
+      .swiper-button-next
 
--#   .post_time
--#     %p= time_ago_in_words(@post.display_created_at) + ' ago'
+    = javascript_include_tag 'application.js'
 
--#   .post_img  
--#     - if @post.images.attached?
--#       - @post.images.each do |image|
--#         = link_to post_path(@post) do
--#           = image_tag image
+    .post_content
+      = @post.content
 
--#   .post_likes#post-id{data: {post_id: @post.id}}
--#     .post_likes.hidden.active-heart
--#       = image_tag 'heart-active.svg'
--#     .post_likes.hidden.inactive-heart
--#       = image_tag 'heart.svg'
-
--#   .post_content
--#     = @post.content
-
--#   .post_add_comment
--#     %div
--#     = link_to 'コメント数件', post_comments_path(@post)
-
--# = javascript_pack_tag 'post'
+    .post_edit
+      = link_to 'Edit', edit_post_path(@post) 
+    
+    .post_delete 
+      = link_to 'Delete', post_path(@post), data: { method: 'delete', confirm: '本当に削除しますか？' }

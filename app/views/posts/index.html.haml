@@ -1,4 +1,16 @@
 .post
+  .post_header
+    .post_header_new
+      = link_to new_post_path do
+        = image_tag 'camera.png' 
+    - if user_signed_in?
+      .post_header_profile
+        = link_to profile_path do
+          = image_tag current_user.avatar_image
+    - else 
+      .post_header_log-in
+        = link_to 'LOG IN', new_user_session_path 
+
   .container
     - @posts.each do |post|
 
@@ -9,7 +21,7 @@
               = link_to profile_path do
                 = image_tag post.user.avatar_image
             -else
-              = link_to account_path(post.user) do
+              = link_to account_path(post.user),data: {"turbolinks" => false} do
                 = image_tag post.user.avatar_image
 
         .post_top_right
@@ -20,27 +32,17 @@
               %p= time_ago_in_words(post.display_created_at) + ' ago'
 
       .post_body
-        .post_body_img
-          - post.images.each do |image|
-            .post_body_imgs
-              = image_tag image
+        .swiper-container
+          .swiper-wrapper
+            - post.images.each do |image|
+              = image_tag image, class:"swiper-slide"
+        
+          .swiper-pagination
 
-      -# .swiper-container.swiper1
-      -#   .swiper-wrapper
-      -#     - post.images.each do |image|
-      -#       = image_tag image, class:"swiper-slide"
+          .swiper-button-prev
+          .swiper-button-next
 
-      -#   .swiper-pagination
-
-      -#   .swiper-button-prev
-      -#   .swiper-button-next
-
-      -#   .swiper-scrollbar
-
-      -# .swiper-container.swiper2
-      -# .swiper-wrapper
-      -#   - post.images.each do |image|
-      -#     = image_tag image, class:"swiper-slide"
+      = javascript_include_tag 'application.js'
 
       .post_share
         .post_share_icon

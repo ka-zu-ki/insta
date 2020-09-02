@@ -1,0 +1,85 @@
+.comment {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+
+  &_top {
+    overflow: hidden;
+
+    margin-top: 30px;
+
+    &_back {
+      float: left;
+      margin-left: 15px;
+    }
+
+    &_status {
+      float: right;
+      margin-right: 190px;
+
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  &_body {
+    overflow: hidden;
+    margin-top: 30px;
+    
+    .main {
+      background-color: lightgray;
+      padding-bottom: 150px;
+    }
+    
+
+    &_left {
+      float: left;
+
+      &_avatar {
+        margin-left: 15px;
+
+        img {
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+
+    &_right {
+      float: right;
+      margin-top: 10px;
+      width: 350px;
+      height: 150px;
+
+      &_name {
+        margin-right: 210px;
+
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      &_content {
+        margin-top: 20px;
+
+        word-break: break-all;
+        font-size: 16px;
+        line-height: 20px;
+        color: #9B9B9B;
+
+      }
+    }
+  }
+}
+
+.btn-secondary {
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  padding: 16px 0;
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+}

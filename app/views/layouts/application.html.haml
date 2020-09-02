@@ -7,20 +7,25 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-
     %link{:href => "https://unpkg.com/swiper/swiper-bundle.css", :rel => "stylesheet"}/
-    
-
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  
   %body
     %header
-      = link_to 'ログイン', new_user_session_path
-      =link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
-      =link_to 'プロフィール', profile_path
-      =link_to 'ホーム', root_path
-      =link_to '新規投稿', new_post_path
+      .header_top
+        .header_top_left
+          = image_tag 'time.png'
+
+        .header_top_right
+          = image_tag 'Mobile'
+          = image_tag 'Wifi'
+          = image_tag 'Battery'
+
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
 
     %script{:src => "https://unpkg.com/swiper/swiper-bundle.js"}
-
     = yield
     
