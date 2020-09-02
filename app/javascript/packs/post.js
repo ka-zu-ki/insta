@@ -19,7 +19,7 @@ const handleHeartDisplay = (hasLiked) => {
 
 const appendNewComment = (comment) => {
   $('.comments-container').append(
-    `<div class="post_comment"><p>${comment.content}</p></div>` 
+    `<div class="post_comment"><p>${comment.content}</p></div>`,
   )
 }
 
@@ -33,11 +33,11 @@ const handleCommentForm = () => {
 const handleReplyForm = () => {
   $('.show-reply-form').on('click', () => {
     $('.show-reply-form').addClass('hidden')
-    $('.reply-text-area').removeClass('hidden')
+    $('.reply-text-area').removeClass('hidden') 
   })
 }
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   $('.profile_avatar').on('click', () => {
     $('.profile_avatar_edit').removeClass('hidden')
     $('profile_avatar').addClass('hidden')
@@ -83,7 +83,6 @@ document.addEventListener('turbolinks:load', () => {
 
     handleCommentForm()
 
-    handleReplyForm()
 
   $('.add-comment-button').on('click', () => {
     const content = $('#comment_content').val()

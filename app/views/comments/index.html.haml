@@ -18,26 +18,6 @@
         .comment_body_right_content
           = comment.content
 
-    -# - comment.replies.each do |reply|
-    -#   .comment_reply
-    -#     .comment_reply_left
-    -#       .comment_reply_left_avatar
-    -#         = image_tag reply.user.avatar_image
-    -#     .comment_reply_right
-    -#       .comment_reply_right_name
-    -#         = reply.user.display_name
-    -#       .comment_reply_right_content
-    -#         = reply.content
-    -#       .comment_reply_right_add
-    -#         = link_to '返信する', new_post_comment_reply_path(@post.id, comment)
-
-
--# .container
--#   .comment_add_new
--#     = link_to 'コメントする', new_post_comment_path(@post)
-
-
-
 .container
   .btn-secondary.show-comment-form
     コメントをする
