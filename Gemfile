@@ -32,6 +32,8 @@ gem 'binding_of_caller'
 gem 'devise'
 gem 'active_model_serializers'
 gem 'sidekiq'
+gem 'aws-sdk-s3', require: false
+
 
 
 
@@ -44,6 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'rubocop-rails'
+  gem 'dotenv-rails'
 end
 
 group :development do
