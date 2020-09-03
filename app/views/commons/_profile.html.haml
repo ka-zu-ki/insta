@@ -11,7 +11,9 @@
         = user.display_name
     .profile_top_log-out
       - if current_page?(profile_path)
-        = link_to 'LOG OUT', destroy_user_session_path, data: { method: 'delete' }
+        = button_to 'LOG OUT', destroy_user_session_path, method: :delete
+
+
 
     .profile_top_follow
       .follow_button.hidden.follow
