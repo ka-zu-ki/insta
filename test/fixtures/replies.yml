@@ -2,12 +2,12 @@
 #
 # Table name: replies
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  comment_id :integer          not null
-#  post_id    :integer          not null
-#  user_id    :integer          not null
+#  comment_id :bigint           not null
+#  post_id    :bigint           not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #
