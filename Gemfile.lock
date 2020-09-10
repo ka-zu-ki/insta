@@ -149,6 +149,18 @@ GEM
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
     jsonapi-renderer (0.2.2)
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
     letter_opener (1.7.0)
@@ -333,6 +345,7 @@ DEPENDENCIES
   hamlit
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
+  kaminari
   letter_opener
   letter_opener_web (~> 1.0)
   listen (~> 3.2)

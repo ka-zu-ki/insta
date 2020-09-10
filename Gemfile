@@ -32,6 +32,7 @@ gem 'devise'
 gem 'active_model_serializers'
 gem 'sidekiq'
 gem 'aws-sdk-s3', require: false
+gem 'kaminari'
 
 
 

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     # user_ids = current_user.followings.pluck(:id)
     # @posts = Post.joins(:likes).group(:id).order('count(post_id) desc')
     # .where(user_id: user_ids, created_at: 1.day.ago.all_day).limit(5)
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(3)
   end
 
   def new
