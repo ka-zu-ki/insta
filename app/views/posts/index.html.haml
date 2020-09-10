@@ -12,9 +12,9 @@
         = link_to 'LOG IN', new_user_session_path 
 
   .post_tabs
-    .tabs_item
+    .post_tabs_item{class: "#{'active' if current_page?(root_path)}"}
       =link_to '新着記事一覧', root_path
-    .tabs_item
+    .post_tabs_item{class: "#{'active' if current_page?(timeline_path)}"}
       = link_to 'タイムライン', timeline_path 
 
   .container
