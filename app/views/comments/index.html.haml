@@ -10,7 +10,12 @@
     .comment_body
       .comment_body_left
         .comment_body_left_avatar
-          = image_tag comment.user.avatar_image
+          - if comment.user === current_user
+            = link_to profile_path do
+              = image_tag comment.user.avatar_image
+          - else 
+            = link_to account_path(comment.user) do
+              = image_tag comment.user.avatar_image
 
       .comment_body_right
         .comment_body_right_name
