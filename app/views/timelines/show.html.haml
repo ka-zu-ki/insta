@@ -1,1 +1,73 @@
-Timeline
+.post
+  .post_header
+    .post_header_new
+      = link_to new_post_path do
+        = image_tag 'camera.png' 
+    - if user_signed_in?
+      .post_header_profile
+        = link_to profile_path do
+          = image_tag current_user.avatar_image
+    - else 
+      .post_header_log-in
+        = link_to 'LOG IN', new_user_session_path 
+
+  .post_tabs
+    .tabs_item
+      =link_to '新着記事一覧', root_path
+    .tabs_item
+      = link_to 'タイムライン', timeline_path 
+
+  .container
+    - @posts.each do |post|
+
+      .post_top
+        .post_top_left
+          .post_top_left_avatar
+            - if post.user === current_user
+              = link_to profile_path do
+                = image_tag post.user.avatar_image
+            -else
+              = link_to account_path(post.user),data: {"turbolinks" => false} do
+                = image_tag post.user.avatar_image
+
+        .post_top_right
+          %ul.post_top_right_content
+            .post_top_right_user-name
+              %p= post.author_name
+            .post_top_right_time
+              %p= time_ago_in_words(post.display_created_at) + ' ago'
+
+      .post_body
+        .swiper-container
+          .swiper-wrapper
+            - post.images.each do |image|
+              = image_tag image, class:"swiper-slide"
+        
+          .swiper-pagination
+
+          .swiper-button-prev
+          .swiper-button-next
+
+      = javascript_include_tag 'application.js'
+
+      .post_share
+        .post_share_icon
+          .post_share_like
+            .post_likes{:id => "likes-#{post.id}"}
+              = render partial: 'likes/like', locals: { post: post}
+
+          .post_share_comment
+            = link_to post_comments_path(post) do
+              = image_tag 'comment.png'
+
+          .post_share_twitter
+            = link_to "https://twitter.com/share?url=#{request.url}&text=insta" do
+              = image_tag 'Vector.png'
+
+      .post_detail
+        .post_detail_info
+          - if post.likes.count > 0
+            = post.likes.count 
+            liked this post
+        .post_detail_content
+          = post.content
