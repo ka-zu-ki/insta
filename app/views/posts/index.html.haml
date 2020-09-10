@@ -11,6 +11,12 @@
       .post_header_log-in
         = link_to 'LOG IN', new_user_session_path 
 
+  .post_tabs
+    .tabs_item
+      =link_to '新着記事一覧', root_path
+    .tabs_item
+      = link_to 'タイムライン', timeline_path 
+
   .container
     - @posts.each do |post|
 
